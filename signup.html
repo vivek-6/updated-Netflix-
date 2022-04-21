@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>sign Up</h1>
+
+    <form >
+
+        <input type="text" placeholder="Name" required id="name" />
+        <input type="email" placeholder="Email" required id="email" />
+        <input type="password" placeholder="Password" required id="pass" />
+        <input type="submit" value="Sign Up" />
+        
+    </form>
+    
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit", signup);
+var stack = JSON.parse(localStorage.getItem("userid")) || [];
+
+    function signup(event){
+        event.preventDefault();
+
+        var email = document.querySelector("#email").value;
+        var pass = document.querySelector("#pass").value;
+        var name = document.querySelector("#name").value;
+
+        var userdata ={
+            nameid:name,
+            emailid:email,
+            passid:pass,
+        };
+stack.push(userdata);
+localStorage.setItem("userid", JSON.stringify(stack));
+alert("Account is created");
+window.location.href='./sinin.html';
+    }
+</script>
